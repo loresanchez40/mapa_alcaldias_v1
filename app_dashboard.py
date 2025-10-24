@@ -9,7 +9,7 @@ st.title("🚨 Dashboard de Incidentes Delictivos – CDMX")
 # === 1. Carga de datos y GeoJSON ===
 url_geojson = "https://datos.cdmx.gob.mx/dataset/bae265a8-d1f6-4614-b399-4184bc93e027/resource/deb5c583-84e2-4e07-a706-1b3a0dbc99b0/download/limite-de-las-alcaldas.json"
 delegaciones = load_geojson(url_geojson)
-df = load_data("df_streamlit.csv")
+df = load_data("df_streamlit_v2.csv")
 
 # === 2. Controles de interfaz ===
 st.sidebar.header("⚙️ Configuración del mapa")
@@ -31,3 +31,4 @@ m = render_folium_map(
     show_heatmap="Heatmap" in tipo_capa
 )
 st_folium(m, width=800, height=600)
+
