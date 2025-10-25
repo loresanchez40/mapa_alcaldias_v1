@@ -8,7 +8,7 @@ from io import BytesIO
 def load_geojson(url, local_backup="limite-de-las-alcaldias.json"):
     """Carga el GeoJSON desde una URL; si falla, usa una copia local."""
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=10)
         response.raise_for_status()
         st.success("✅ GeoJSON cargado correctamente desde Datos Abiertos CDMX")
         return gpd.read_file(BytesIO(response.content))
@@ -44,3 +44,4 @@ def render_folium_map(df, delegaciones, show_points=True, show_heatmap=True):
 
     folium.LayerControl().add_to(m)
     return m
+
